@@ -1,7 +1,7 @@
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm
 
 # Optional: set preferred apt mirror
-RUN sed -i 's/deb.debian.org/mirror.corbina.net/g' /etc/apt/sources.list
+# RUN sed -i 's/deb.debian.org/mirror.corbina.net/g' /etc/apt/sources.list
 
 # Install Wine & deps
 RUN apt-get update && apt-get install -y dialog xfce4 xfce4-terminal wget curl mc htop ttf-mscorefonts-installer fonts-noto unzip; sed -i 's/openbox/xfce4/' /defaults/startwm.sh
@@ -10,7 +10,7 @@ RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/d
 RUN apt-get purge -y openbox; apt-get autoremove --purge -y; apt-get clean all
 
 # Optional: restore original mirror
-RUN sed -i 's/mirror.corbina.net/deb.debian.org/g' /etc/apt/sources.list
+# RUN sed -i 's/mirror.corbina.net/deb.debian.org/g' /etc/apt/sources.list
 
 # Optional: su to abc
 # USER abc
